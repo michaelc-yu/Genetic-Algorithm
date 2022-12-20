@@ -2,6 +2,7 @@ import re
 import sys
 import random
 import math
+from prettytable import PrettyTable
 
 
 def main():
@@ -13,7 +14,7 @@ def main():
     print("number of mutations: " + num_mutations)
     print("chance of inheritance: " + inherit_chance)
     print("average number of offspring: " + avg_num_offspring)
-    print("analyzing: " + iterations + " iterations")
+    print("simulating " + iterations + " iterations")
 
     genetic_algorithm(int(pop_size), int(num_mutations), float(inherit_chance), int(avg_num_offspring), int(iterations))
 
@@ -25,6 +26,19 @@ def round(x):
         else:
             x = math.ceil(x)
     return x
+
+
+def print_status(generation, population, num_carrier, num_infected, print_all, data):
+    table = PrettyTable()
+    table.field_names = ["Generation", "Population Size", "Number of Carriers", "Number Infected"]
+    if not print_all:
+        table.add_row([generation, population, num_carrier, num_infected])
+        print(table)
+    else:
+        for iter in range(len(data)):
+            table.add_row([iter, data[iter][0], data[iter][1], data[iter][2]])
+        print(table)
+    return
 
 
 def new_generation(pop_size, num_carrier, num_infected, inherit_chance, avg_num_offspring):
@@ -52,13 +66,21 @@ def new_generation(pop_size, num_carrier, num_infected, inherit_chance, avg_num_
 
 
 def genetic_algorithm(pop_size, num_mutations, inherit_chance, avg_num_offspring, iterations):
+    data = []
+    # data: (population, number of carriers, number of infected)
+    data+={(pop_size, num_mutations, 0)}
     new_gen = new_generation(pop_size, num_mutations, 0, inherit_chance, avg_num_offspring)
-    print(new_gen)
+    #print(new_gen)
     for i in range(iterations):
         new_gen = new_generation(new_gen['num_offspring'], new_gen['num_offspring_carrier'], new_gen['num_offspring_infected'], inherit_chance, avg_num_offspring)
+        new_population = new_gen['num_offspring']
+        num_carrier = new_gen['num_offspring_carrier']
+        num_infected = new_gen['num_offspring_infected']
+        data+={(new_population, num_carrier, num_infected)}
     
     print("Number infected after " + str(iterations) + " generations: " + str(new_gen['num_offspring_infected']))
-
+    print_status(iterations, new_gen['num_offspring'], new_gen['num_offspring_carrier'], new_gen['num_offspring_infected'], 1, data)
+    #print(data)
 
 if __name__ == "__main__":
     main()
