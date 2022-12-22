@@ -7,6 +7,13 @@ import newgen
 import geneticalgo
 
 
+# Disease mutations can be dominant or recessive at the cellular level. For dominant mutations, a single mutated allele can lead to pathogenesis, whereas for recessive mutations, both alleles need to be mutated for disease to occur.
+
+# It is a long-standing observation that most mutations are recessive (therefore, this models autosomal recessive diseases)
+
+# IDEA: perform simulation 100 times and take the average values
+
+
 def main():
     input = ""
     for line in sys.stdin:
@@ -24,9 +31,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-# Disease mutations can be dominant or recessive at the cellular level. For dominant mutations, a single mutated allele can lead to pathogenesis, whereas for recessive mutations, both alleles need to be mutated for disease to occur.
-
-# IDEA: perform simulation 100 times and take the average values
