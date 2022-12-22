@@ -7,7 +7,7 @@ import helperfuncs
 
 
 
-def new_generation(pop_size, num_carrier, num_infected, inherit_chance, avg_num_offspring):
+def new_generation(pop_size, num_carrier, num_infected, avg_num_offspring):
     # healthy is  'BB'
     # carrier is  'Bb'
     # infected is 'bb'
