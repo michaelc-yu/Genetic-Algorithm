@@ -18,7 +18,7 @@ def new_generation(pop_size, num_carrier, num_infected, avg_num_offspring):
     percent_carrier = num_carrier / pop_size
     percent_infected = num_infected / pop_size
 
-# percentages of various genotype mixing from previous generation
+    # percentages of various genotype mixing from previous generation
     d['BB x BB'] = percent_healthy * percent_healthy
     d['BB x Bb'] = (percent_healthy * percent_carrier) + (percent_carrier * percent_healthy)
     d['BB x bb'] = (percent_healthy * percent_infected) + (percent_infected * percent_healthy)
@@ -26,7 +26,7 @@ def new_generation(pop_size, num_carrier, num_infected, avg_num_offspring):
     d['Bb x bb'] = (percent_carrier * percent_infected) + (percent_infected * percent_carrier)
     d['bb x bb'] = percent_infected * percent_infected
 
-# percentages
+    # percentages
     d['percent_offspring_healthy'] = (
         d['BB x BB'] + (d['BB x Bb'] * 0.5) + (d['Bb x Bb'] * .25)
     )
@@ -37,7 +37,7 @@ def new_generation(pop_size, num_carrier, num_infected, avg_num_offspring):
         d['Bb x Bb'] * 0.25 + d['Bb x bb'] * 0.5 + d['bb x bb']
     )
 
-# totals
+    # totals
     d['num_healthy_offspring'] = helperfuncs.round_random(d['num_offspring'] * (
         d['BB x BB'] + (d['BB x Bb'] * 0.5) + (d['Bb x Bb'] * .25)
     ))

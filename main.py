@@ -15,10 +15,16 @@ import geneticalgo
 
 
 def main():
-    input = ""
-    for line in sys.stdin:
-        input += line
-    pop_size, num_mutations, avg_num_offspring, iterations = input.split()
+    if len(sys.argv) == 5:
+        pop_size = sys.argv[1]
+        num_mutations = sys.argv[2]
+        avg_num_offspring = sys.argv[3]
+        iterations = sys.argv[4]
+    else:
+        input = ""
+        for line in sys.stdin:
+            input += line
+        pop_size, num_mutations, avg_num_offspring, iterations = input.split()
     print("population size: " + pop_size)
     print("number of mutations: " + num_mutations)
     print("average number of offspring: " + avg_num_offspring)
