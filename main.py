@@ -2,7 +2,7 @@ import re
 import sys
 import random
 import math
-import helperfuncs
+import helpers
 import newgen
 import geneticalgo
 

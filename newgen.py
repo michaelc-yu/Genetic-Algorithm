@@ -2,7 +2,7 @@ import re
 import sys
 import random
 import math
-import helperfuncs
+import helpers
 
 
 
@@ -12,7 +12,7 @@ def new_generation(pop_size, num_carrier, num_infected, avg_num_offspring):
     # carrier is  'Bb'
     # infected is 'bb'
     d = dict()
-    d['num_offspring'] = helperfuncs.round_random((pop_size / 2) * avg_num_offspring)
+    d['num_offspring'] = helpers.round_random((pop_size / 2) * avg_num_offspring)
     num_healthy = pop_size - num_carrier - num_infected
     percent_healthy = num_healthy / pop_size
     percent_carrier = num_carrier / pop_size
@@ -38,13 +38,13 @@ def new_generation(pop_size, num_carrier, num_infected, avg_num_offspring):
     )
 
     # totals
-    d['num_healthy_offspring'] = helperfuncs.round_random(d['num_offspring'] * (
+    d['num_healthy_offspring'] = helpers.round_random(d['num_offspring'] * (
         d['BB x BB'] + (d['BB x Bb'] * 0.5) + (d['Bb x Bb'] * .25)
     ))
-    d['num_offspring_carrier'] = helperfuncs.round_random(d['num_offspring'] * (
+    d['num_offspring_carrier'] = helpers.round_random(d['num_offspring'] * (
         (d['BB x Bb'] * 0.5) + d['BB x bb'] + (d['Bb x Bb'] * 0.5) 
     ))
-    d['num_offspring_infected'] = helperfuncs.round_random(d['num_offspring'] * (
+    d['num_offspring_infected'] = helpers.round_random(d['num_offspring'] * (
         (d['Bb x Bb'] * 0.25) + (d['Bb x bb'] * 0.5) + d['bb x bb']
     ))
 

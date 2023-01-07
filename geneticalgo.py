@@ -2,7 +2,7 @@ import re
 import sys
 import random
 import math
-import helperfuncs
+import helpers
 import newgen
 
 
@@ -22,4 +22,4 @@ def genetic_algorithm(pop_size, num_mutations, avg_num_offspring, iterations):
 
         data+={(int(new_gen['num_offspring']), new_gen['num_healthy_offspring'], new_gen['percent_offspring_healthy'], new_gen['num_offspring_carrier'], new_gen['percent_offspring_carrier'], new_gen['num_offspring_infected'], new_gen['percent_offspring_infected'])}
     
-    helperfuncs.print_numbers(iterations, new_gen['num_offspring'], new_gen['num_healthy_offspring'], new_gen['percent_offspring_healthy'], new_gen['num_offspring_carrier'], new_gen['percent_offspring_carrier'], new_gen['num_offspring_infected'], new_gen['percent_offspring_infected'], 1, data)
+    helpers.print_numbers(iterations, new_gen['num_offspring'], new_gen['num_healthy_offspring'], new_gen['percent_offspring_healthy'], new_gen['num_offspring_carrier'], new_gen['percent_offspring_carrier'], new_gen['num_offspring_infected'], new_gen['percent_offspring_infected'], 1, data)
